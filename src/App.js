@@ -7,12 +7,40 @@ import * as fsAPI from './Foursquare';
 
 
 class App extends Component {
+
+  state = {
+    center: { lat: 37.556, lng: -122.325 },
+    markers: [],
+    venues: []
+  }
+
+  updateCenter = (newCenter) => {
+    console.log('set center called');
+    this.setState({ center: newCenter });
+    console.log(this.state.center);
+  }
+    
+
+
+  //fetch venues from foursquare and make them into markers
   componentDidMount() {
     fsAPI.search({
-      near: "Austin, TX",
+      near: "San Mateo, CA",
       query: "tacos",
       limit: 10
-    }).then(results => console.log(results));
+    }).then(results => {
+      const { venues } = results.response;
+      const markers = venues.map(venue => {
+        return {
+          lat: venue.location.lat,
+          lng: venue.location.lng,
+          clicked: false,
+          show: true
+        };
+      });
+
+      this.setState({ venues, markers });
+    });
   }
 
   render() {
@@ -25,7 +53,11 @@ class App extends Component {
         <main id="maincontent">
           {/* map rendering */}
           <section id="map-container" aria-label="Interactive Map display" role='application'>
-            <Map />
+            <Map
+              venues={this.state.venues}
+              markers={this.state.markers}
+              center={this.state.center}
+              updateCenter={this.updateCenter}/>
           </section>
 
 

@@ -58,7 +58,38 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   max-width:1200px;
 }
+/* ====================== Map ====================== */
+#map {
+  height: 400px;
+  width: 100%;
+  background-color: #ccc;
+}
 
+/* ====================== Filtering ====================== */
+.filter-options {
+  width: 100%;
+  background-color: rgb(16, 57, 87);
+  align-items: center;
+}
+.filter-options h2 {
+  color: white;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1;
+  margin: 0 20px;
+  padding-top: 15px;
+}
+.filter-options select {
+  background-color: white;
+  border: 1px solid #fff;
+  font-family: Arial,sans-serif;
+  font-size: 11pt;
+  height: 35px;
+  letter-spacing: 0;
+  margin: 10px;
+  padding: 0 10px;
+  width: 200px;
+}
 
 /* ====================== Responsive ====================== */
 
