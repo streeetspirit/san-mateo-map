@@ -91,6 +91,33 @@ h1, h2, h3, h4, h5, h6 {
   width: 200px;
 }
 
+/* ====================== Info window ====================== */
+#infoWindow .venue-img {
+  background-color: #ccc;
+  display: block;
+  margin: 0;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+#infoWindow h2 {
+  color: rgb(19, 41, 66);
+  font-family: Arial,sans-serif;
+  font-size: 14pt;
+  font-weight: 200;
+  letter-spacing: 0;
+  line-height: 1.3;
+  margin: 10px 10px;
+  text-transform: uppercase;
+}
+
+#infoWindow p {
+  margin: 0;
+  font-size: 11pt;
+}
+
+
+
 /* ====================== Responsive ====================== */
 
 @media screen and (max-width: 379px) {

@@ -3,10 +3,16 @@ import React, { Component } from 'react';
 
 class FilterResults extends Component {
   render() {
-
-    return (
-      <div></div>
-    )
+    if (this.props.err) {
+      return (
+        <div>{this.props.err}</div>
+      )
+    } else {
+      return (
+        <div>Ola!</div>
+      )
+    }
+    
   }
 }
 
