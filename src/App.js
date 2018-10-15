@@ -9,13 +9,16 @@ import * as fsAPI from './Foursquare';
 
 class App extends Component {
  state = {
-      //  center: { lat: 37.556, lng: -122.325 },
         markers: [],
         venues: [],
         currCategory: "all",
         categories: [
-          { id:'4bf58dd8d48988d1e0931735', name:  "Coffee Shop"},
-          { id:'4bf58dd8d48988d1c9941735', name: "Ice-cream"},
+          { id: '4bf58dd8d48988d1e0931735', name:  "Coffee Shops"},
+          { id: '4bf58dd8d48988d1c9941735', name: "Ice-cream" },
+          { id: '4bf58dd8d48988d16a941735', name: "Bakery" },
+     //     { id: '4bf58dd8d48988d12f941735', name: "Libraries" },
+          { id: '4bf58dd8d48988d175941735', name: "Gyms" },
+          { id: '4bf58dd8d48988d163941735', name: "Parks"}
     
         ],
         err: ""
@@ -94,7 +97,7 @@ class App extends Component {
           near: "San Mateo, CA",
           radius: 3000,
           categoryId: category.id,
-          limit: 2
+          limit: 5
         }).then(results => {
           const { venues } = results.response;
           let markers = venues.map(venue => {
