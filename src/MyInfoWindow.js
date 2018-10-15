@@ -5,7 +5,6 @@ class MyInfoWindow extends React.Component {
 
   render() {
     const venueData = this.props.venues.find(venue => venue.id === this.props.markerId);
-    console.log(venueData);
     return (
       <InfoWindow onCloseClick={this.props.unclick}>
         <div id = "infoWindow">

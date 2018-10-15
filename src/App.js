@@ -7,7 +7,6 @@ import FilterResults from './FilterResults';
 import * as fsAPI from './Foursquare';
 
 
-
 class App extends Component {
  state = {
       //  center: { lat: 37.556, lng: -122.325 },
@@ -63,7 +62,6 @@ class App extends Component {
 
   // when dropdown is used to narrow result we filter markers and list items
   filterMarkers = (selectValue) => {
-    console.log("chosen category - ", selectValue);
     this.setState({ currCategory: selectValue });
     //const currCategory = this.state.currCategory;
     if (selectValue === "all") {
@@ -80,8 +78,7 @@ class App extends Component {
         })
       })
     }
-    console.log("current state of markers - ", this.state.markers);
-    console.log("cutt category - ", selectValue);
+
   }
 
 
@@ -151,6 +148,7 @@ class App extends Component {
   //fill the state with fetched data
   //chain promisses so data don't compete with each other
   componentDidMount() {
+
     this.fetchAllMarkers()
       .then(results => {
         this.setState({ markers: results[0], venues: results[1] });
