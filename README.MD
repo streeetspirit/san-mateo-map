@@ -19,8 +19,7 @@ Sometimes there could be mildly irrelevant results (like a burger shop in an ice
 1. Copy this repo on your computer
 2. Check that you have node.js and npm installed
 3. Install all project dependencies with `npm install`
-4. Modify Google Maps API key ( in `./src/Map.js`, parameter **googleMapURL**) to match yours
-  Modify Foursquare API key ( in `./src/Foursquare.js`, parameter **foursquareKeys**) to match yours.
+4. Modify Google Maps API key ( in `./src/Map.js`, parameter **googleMapURL**) to match yours. Modify Foursquare API key ( in `./src/Foursquare.js`, parameter **foursquareKeys**) to match yours.
   *These keys will be disabled as soon as the app gets evaluated by Udacity team.*
 5. Start the development server with `npm start`
 
