@@ -96,7 +96,7 @@ class App extends Component {
           near: "San Mateo, CA",
           radius: 3000,
           categoryId: category.id,
-          limit: 1
+          limit: 5
         }).then(results => {
           let { venues } = results.response;
           if (typeof (venues) === 'undefined') {
