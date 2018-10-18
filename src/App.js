@@ -153,23 +153,27 @@ class App extends Component {
   //fill the state with fetched data
   //chain promisses so data don't compete with each other
   componentDidMount() {
-
-    this.fetchAllMarkers()
-      .then(results => {
-        this.setState({ markers: results[0], venues: results[1], err: (results[0].length === 0) && "Oops, something happened to our searching robots! Try again later." });
-        this.fetchAllVenueDetails()
-          .then(res => {
-            if (!res.every(item => item==='undefined')) {
-              this.setState({ venues: res });
-            }
-          })
-      });
+    if (navigator.onLine) {
+      this.fetchAllMarkers()
+        .then(results => {
+          this.setState({ markers: results[0], venues: results[1], err: (results[0].length === 0) && "Oops, something happened to our searching robots! Try again later." });
+          this.fetchAllVenueDetails()
+            .then(res => {
+              if (!res.every(item => item === 'undefined')) {
+                this.setState({ venues: res });
+              }
+            })
+        });
     
 
-    window.gm_authFailure = () => {
-      document.getElementById('map-container').style.display = "none";
+      window.gm_authFailure = () => {
+        document.getElementById('map-container').style.display = "none";
+        document.getElementById('map-err').style.display = "block";
+      };
+    } else {
+      this.setState({ err: "Sorry, you're offline" });
       document.getElementById('map-err').style.display = "block";
-    };
+    }
   }
 
   render() {
@@ -182,11 +186,11 @@ class App extends Component {
         <main id="maincontent">
           {/* map rendering */}
           <section id="map-container" aria-label="Interactive Map display" role='application'>
-            <Map
+            {navigator.onLine && <Map
               venues={this.state.venues}
               markers={this.state.markers}
               clickMarker={this.clickMarker}
-              />
+            />}
           </section>
           {/* in case maps didn't load - show error */}
           <section id="map-err">
