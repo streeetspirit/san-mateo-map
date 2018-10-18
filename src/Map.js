@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 import MyInfoWindow from './MyInfoWindow';
+import PropTypes from 'prop-types';
 
 const style = require("./mapStyle.json")
 
@@ -32,9 +33,11 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
 
 
 class Map extends Component {
+  //handle authorisation faliure
+
 
   render() {
-
+    
     return (
       <div id="map">
       <MyMapComponent
@@ -45,9 +48,16 @@ class Map extends Component {
         loadingElement={<div style={{ height: `100%` }} />}
         containerElement={<div style={{ height: `400px` }} />}
         mapElement={<div style={{ height: `100%` }} />}
-      /></div>
+        />
+        </div>
     )
   }
 }
 
 export default Map
+
+Map.propTypes = {
+  venues: PropTypes.array,
+  markers: PropTypes.array,
+  clickMarker: PropTypes.func.isRequired 
+}

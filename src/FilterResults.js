@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 
 class FilterResults extends Component {
   
   render() {
-    if (this.props.err || !this.props.venues || !this.props.markers) {
+    if (this.props.err || (typeof (this.props.venues) === 'undefined') || (typeof (this.props.markers) === 'undefined')) {
       return (
-        <div>{this.props.err}</div>
+        <div class='err'>{this.props.err}</div>
       )
     } else {
       let markersToShow = this.props.markers || [];
@@ -25,8 +26,8 @@ class FilterResults extends Component {
 
               return(
              
-                <li key={id}>
-                  <h2>
+                <li key={id} arialabelled-by="venueName">
+                  <h2 id="venueName">
                     {venueData.name}
                   </h2>
                   {venueData.bestPhoto && (
@@ -64,3 +65,11 @@ class FilterResults extends Component {
 }
 
 export default FilterResults
+
+FilterResults.propTypes = {
+  showOnMap: PropTypes.func.isRequired,
+  markers: PropTypes.array.isRequired,
+  venues: PropTypes.array.isRequired,
+  category: PropTypes.string.isRequired,
+  
+}

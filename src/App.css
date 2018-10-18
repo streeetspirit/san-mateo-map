@@ -58,11 +58,28 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   max-width:1200px;
 }
+
+.err {
+  padding: 15px 50px;
+  margin: 15px;
+  font-size: 8pt;
+  text-transform: uppercase;
+  color: rgb(58, 26, 26);
+  background-color: #ffe6e6;
+  border-radius: 5px;
+  border-color: crimson;
+  border-style: solid;
+}
 /* ====================== Map ====================== */
 #map {
   height: 400px;
   width: 100%;
   background-color: #ccc;
+  display: block;
+}
+
+#map-err {
+  display: none;
 }
 
 /* ====================== Filtering ====================== */

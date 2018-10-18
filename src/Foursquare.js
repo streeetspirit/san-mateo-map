@@ -28,13 +28,15 @@ export const search = (params) =>
     method: "GET",
     headers
   })
-    .then(res => res.json());
+    .then(res => res.json())
+    .catch(err => console.log("err in markers fetch ", err));
 
 export const venueDetails = (venueID) =>
   fetch(`${apiURL}/venues/${venueID}/?${auth}`, {
     method: "GET"
   })
-    .then(res => res.json());
+    .then(res => res.json())
+    .catch(err => console.log("err in venue info fetch ", err));
 
 
 

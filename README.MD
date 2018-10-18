@@ -14,7 +14,7 @@ Keep in mind that right now the app is limited to only request **5 items per eac
 
 Sometimes there could be mildly irrelevant results (like a burger shop in an ice-cream category), because it may have this as a secondary category on Foursquare (and indeed serve ice-cream) but have a different primary category.
 
-### How to run the project
+### How to run the project in a development mode (no service worker)
 
 1. Copy this repo on your computer
 2. Check that you have node.js and npm installed
@@ -24,6 +24,14 @@ Sometimes there could be mildly irrelevant results (like a burger shop in an ice
 5. Start the development server with `npm start`
 
 With your server running, visit the site: `http://localhost:3000` (it will be opened for you when you run `npm start` command)
+
+### How to run the project in a production mode
+1. Repeat steps 1-4 from a previous section
+2. Build the project with `npm run build`
+5. Start the production server with `npm serve -s build`
+
+With your server running, visit the site: `http://localhost:5000`
+
 
 ### What's used in the project
 * React.js

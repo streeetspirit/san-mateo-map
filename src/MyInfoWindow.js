@@ -1,5 +1,6 @@
 import React from 'react';
 import { InfoWindow } from "react-google-maps"
+import PropTypes from 'prop-types';
 
 class MyInfoWindow extends React.Component {
 
@@ -28,3 +29,9 @@ class MyInfoWindow extends React.Component {
    
 
 export default MyInfoWindow
+
+MyInfoWindow.propTypes = {
+  venues: PropTypes.array.isRequired,
+  markerId: PropTypes.string.isRequired,
+  unclick: PropTypes.func.isRequired 
+}

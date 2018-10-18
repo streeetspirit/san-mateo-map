@@ -16,7 +16,6 @@ class App extends Component {
           { id: '4bf58dd8d48988d1e0931735', name:  "Coffee Shops"},
           { id: '4bf58dd8d48988d1c9941735', name: "Ice-cream" },
           { id: '4bf58dd8d48988d16a941735', name: "Bakery" },
-     //     { id: '4bf58dd8d48988d12f941735', name: "Libraries" },
           { id: '4bf58dd8d48988d175941735', name: "Gyms" },
           { id: '4bf58dd8d48988d163941735', name: "Parks"}
     
@@ -97,9 +96,12 @@ class App extends Component {
           near: "San Mateo, CA",
           radius: 3000,
           categoryId: category.id,
-          limit: 5
+          limit: 1
         }).then(results => {
-          const { venues } = results.response;
+          let { venues } = results.response;
+          if (typeof (venues) === 'undefined') {
+            venues = [];
+          }
           let markers = venues.map(venue => {
             return {
               id: venue.id,
@@ -154,15 +156,21 @@ class App extends Component {
 
     this.fetchAllMarkers()
       .then(results => {
-        this.setState({ markers: results[0], venues: results[1] });
+        this.setState({ markers: results[0], venues: results[1], err: (results[0].length === 0) && "Oops, something happened to our searching robots! Try again later." });
         this.fetchAllVenueDetails()
           .then(res => {
-            this.setState({ venues: res });
-        })
-      })    
+            if (!res.every(item => item==='undefined')) {
+              this.setState({ venues: res });
+            }
+          })
+      });
+    
 
+    window.gm_authFailure = () => {
+      document.getElementById('map-container').style.display = "none";
+      document.getElementById('map-err').style.display = "block";
+    };
   }
-  
 
   render() {
     return (
@@ -177,8 +185,12 @@ class App extends Component {
             <Map
               venues={this.state.venues}
               markers={this.state.markers}
-              center={this.state.center}
-              clickMarker={this.clickMarker}/>
+              clickMarker={this.clickMarker}
+              />
+          </section>
+          {/* in case maps didn't load - show error */}
+          <section id="map-err">
+            <div className='err'>Sorry, we couldn't load Google Maps. Please, try again later.</div>
           </section>
 
 

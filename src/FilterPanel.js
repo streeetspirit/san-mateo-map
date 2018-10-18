@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // export const categories = ["Ice-cream", "Libraries", "Bakery", "Coffee Shop", "Gym", "Parks"];
 
@@ -16,3 +17,9 @@ const FilterPanel = (props) => (
 )
 
 export default FilterPanel
+
+FilterPanel.propTypes = {
+  filterMarkers: PropTypes.func.isRequired,
+  categories: PropTypes.array.isRequired,
+  
+}
