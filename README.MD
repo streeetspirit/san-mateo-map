@@ -28,7 +28,7 @@ With your server running, visit the site: `http://localhost:3000` (it will be op
 ### How to run the project in a production mode
 1. Repeat steps 1-4 from a previous section
 2. Build the project with `npm run build`
-5. Start the production server with `npm serve -s build`
+5. Start the production server with `serve -s build`
 
 With your server running, visit the site: `http://localhost:5000`
 
