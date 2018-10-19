@@ -98,6 +98,9 @@ class App extends Component {
           categoryId: category.id,
           limit: 5
         }).then(results => {
+          if (typeof (results) === 'undefined') {
+            results = [];
+          }
           let { venues } = results.response;
           if (typeof (venues) === 'undefined') {
             venues = [];
